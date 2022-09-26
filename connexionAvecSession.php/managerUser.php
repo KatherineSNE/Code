@@ -3,11 +3,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 //** KEYWORD EXTENDS OPENS ACCESS THEN CLOSES AFTER USE
-//** MANAGER IS USED TO SEPERATE THE FILES AND SENSITIVE DATABASE INFORMATION SUCH AS STRUCTURE */ */
+//** MANAGER IS USED TO SEPERATE THE FILES AND SENSITIVE CODE CONCERNING DATABASE INTERACTION AND STRUCTURE  */ */
 class Muser extends user{
 //* INSERT NEW USER INTO BDD USING BIND PARAMS AND PREPARE FOR SECURITY* */
 public function createUser($bdd,$nameUser,$nomfam,$mail,$mdp,$rights,$stat,$attente, $hashLog){
-//** TRY AND CATCH ALLOWS THE DATABASE TO BE CLOSED SHOULD AN ERROR OCCUR. THIS WILL CLOSE AND EVALUAT THE ERROR AFTERWARDS
+//** TRY AND CATCH ALLOWS THE DATABASE TO BE CLOSED SHOULD AN ERROR OCCUR. THIS WILL CLOSE AND EVALUATE THE ERROR AFTERWARDS
 //** AS AT THE POINT OF THE ERROR OCCURING IT IS UNKNOWN IF IT IS AN ATTACK */
     try{
 //** THE FUNCTION PREPARE IS EMPLOYED TO SECURE THE REQUEST THIS IS ALSO FOR EFFICIENCY AS SQL WILL STOCK THE INFORMATION READY FOR PULLING AT THE NEXT REQUEST  */
@@ -53,7 +53,7 @@ public function createUser($bdd,$nameUser,$nomfam,$mail,$mdp,$rights,$stat,$atte
         die('error:'.$e->getMessage());
     }
 }
-//** PULL CONTENT OF DATABASE TO INCLUDING USER STATUS TO STOCK THE SESSION AND VERIFY ACCESS */  
+//** PULL CONTENT OF DATABASE INCLUDING USER STATUS TO STOCK THE SESSION AND VERIFY ACCESS */  
 public function getUserByMail($bdd,$emailUser,$stat){
     try{
         $req = $bdd->prepare('SELECT id_user,name_user,surname_user,email_user,password_user,id_rights, status_user FROM user 
@@ -132,8 +132,9 @@ public function deleteUser($bdd,$idUsers){
         $del->bindparam(1, $idUsers, PDO::PARAM_INT);
         $del->execute();
         if($del){
-            return true;
             session_destroy();
+            return true;
+            
         }
         }
 

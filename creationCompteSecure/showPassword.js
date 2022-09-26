@@ -1,4 +1,4 @@
-//** STOCK THE VARIABLES WITH THE INTERCHANGABLE CONTENT OF THE BUTTONS */
+//** STOCK THE VARIABLES WITH THE INTERCHANGABLE CONTENT OF THE BUTTON */
 let y = "Cacher le mot de passe";
 let z = "Voir le mot de passe";
 
@@ -11,7 +11,7 @@ let hideType = document.querySelector(".hidePass");
 let viewShow = document.querySelector(".passShow");
 let viewHide = document.querySelector(".passHide");
 
-//** ADD AN EVENT LISTENER TO THE BUTTON */
+//** ADD AN EVENT LISTENER, TYPE CLICK, TO THE BUTTON */
 see.addEventListener("click", function(){
     if(see.classList.contains("view")){
 //** MODIFY THE TYPE OF THE INPUT FROM PASSWORD TO TEXT TO SEE THE PASSWORD ON CLEAR */

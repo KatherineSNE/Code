@@ -13,7 +13,7 @@ if(isset($_POST['name_user'])&&isset($_POST['surname_user'])&&
     if($_POST['password_user']!=$_POST['confirmPassword']){
 //** IF NOT SHOW ERROR PAGE*/ 
         header('Location: TryAgain');
-//** IF THEY ARE GOOD CREATE AND STOCK OBJECT CLEANING THE INPUT TO AVOIND SQL INJECTION */
+//** IF THEY ARE GOOD INSTANCIATE AND STOCK OBJECT CLEANING THE INPUT TO AVOIND SQL INJECTION */
     }else{           
             $user = new Muser();    
             $user->setName(htmlspecialchars(strip_tags(trim($_POST['name_user']))));
@@ -37,7 +37,7 @@ if(isset($_POST['name_user'])&&isset($_POST['surname_user'])&&
                 if($ref&&isset($_POST['submit'])){
 //** SET THE STATUS OF THE ACCOUNT TO ZERO MEANING ACESS IS DENIED UNTI EMAIL ADDRESS IS VERIFIED */
                     $attente = 0;
-//** HASH THE EMAIL ADDRESS SO IT CAN BE USED IN THE URL TO IDENTIFY THE USER AT OINT OF VERIFICATION */
+//** HASH THE EMAIL ADDRESS SO IT CAN BE USED IN THE URL TO IDENTIFY THE USER AT POINT OF VERIFICATION */
                     $hashLog = md5($_POST['email_user']);
 //** POINT OBJECT TOWARDS THE FUNCTION CREATE TO STOCK THE BDD */
                     $user->createUser($bdd,$nameUser,$nomfam,$mail,$mdp,$rights,$stat, $attente, $hashLog);

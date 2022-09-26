@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
     if(isset($_POST['email_user'])&& isset($_POST['password_user'])){
         $emailUser = ($_POST['email_user']);
         $passwordLog = ($_POST['password_user']);
-//* INSTINCIATE CLASS/CREATION OF OBJECT */
+//* INSTINCIATION OF OBJECT */
         $user = new Muser();
 
 //* STOCK OBJECT WITH USER INFORMATION CLEANED TO AVOID SQL INJECTION */
